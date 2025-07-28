@@ -55,20 +55,6 @@
                 ]
             }
         },
-        "worker_agents": {
-            "type": "array",
-            "description": "Optional. Contains an array of objects that define worker agents that the AI application can use as tools to facilitate answering questions. There MUST NOT be more than 10 worker agents in the array.",
-            "uniqueItems": true,
-            "minItems": 1,
-            "maxItems": 10,
-            "items": {
-                "oneOf": [
-                    {
-                        "$ref": "#/$defs/worker_agent"
-                    }
-                ]
-            }
-        },
         "conversation_starters": {
             "type": "array",
             "description": "Optional. A list of examples of questions that the declarative agent can answer. There MUST NOT be more than six objects in the array.",
@@ -106,7 +92,6 @@
             "disclaimer",
             "instructions",
             "capabilities",
-            "worker_agents",
             "behavior_overrides",
             "conversation_starters",
             "actions",
@@ -568,32 +553,6 @@
                         "name"
                     ]
                 }
-            }
-        },
-        "worker_agent": {
-            "type": "object",
-            "description": "Defines a declarative agent that can act as worker agent. Declarative agents can either be referenced via their agent id or using the file property, but not both.",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Required. A unique identifier for a Declarative Agent.",
-                    "pattern": "^(?!\\[\\[)(.*?)(?<!\\]\\])$"
-                },
-                "file": {
-                    "type": "string",
-                    "description": "Required. A relative file path to the declarative agent manifest for the worker agent.",
-                    "pattern": "^(?!\\[\\[)(.*?)(?<!\\]\\])$"
-                }
-            },
-            "required": [
-                "id",
-                "file"
-            ],
-            "propertyNames": {
-                "enum": [
-                    "id",
-                    "file"
-                ]
             }
         },
         "behavior-overrides": {
